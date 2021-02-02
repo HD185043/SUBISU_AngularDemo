@@ -1,0 +1,48 @@
+<style>
+.table-striped > tbody > tr:nth-child(odd) > td {
+   background-color: #90bd5a;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td{
+    background-color:#72B0BC;
+}
+</style>
+
+<div class="container">
+    <br><br>
+    <button (click)="onSave()"class="btn btn-primary">Refresh Data</button>
+    <br><br>
+    <div class="modal-content" style="background-color: #e9ecef;">
+        <div class="modal-body">
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive" style="max-height: 600px;">
+                    <table class="table table-hover table-bordered table-striped">
+                        <caption style="display: table-caption;caption-side:top">ONU List</caption>
+                        <thead style="background-color: #007e9c;color:white">
+                            <tr>
+                                <th>FNO</th>
+                                <th>FID</th>
+                                <th>Feature Type</th>
+                                <th>Address</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let instance of outputData">                             
+                                <td>{{instance.FNO}}</td>
+                                <td>{{instance.FID}}</td>
+                                <td>{{instance.FeatureType}}</td>
+                                <td>{{instance.Address}}</td>
+                            </tr>
+                            <tr *ngIf="!outputData">
+                                <td colspan="4">Loading data. Please wait...</td>
+                            </tr>
+                            <tr *ngIf="outputData && outputData.length==0">
+                                <td colspan="4">No data to display</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
