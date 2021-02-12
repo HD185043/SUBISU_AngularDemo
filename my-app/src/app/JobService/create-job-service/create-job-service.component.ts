@@ -26,7 +26,15 @@ export class CreateJobServiceComponent implements OnInit {
          console.log(that.outputData.length);
     },4000);
   }
-
+  
+  rowClicked(instance:JobData){
+    console.log(instance.FID);
+    console.log(instance.FNO);
+    window.parent["$NWP"].features.fetchGTechFeatures({G3E_FNO:instance.FNO,G3E_FID:instance.FID}).then(function(result){
+      window.parent["$NWP"].features.highlight(result.data,true);
+    })
+  }
+  
   onSave(){
     window.location.reload();
   }
